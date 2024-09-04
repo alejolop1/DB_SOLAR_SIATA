@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "db-solar-siata"
+version = "0.1.0"
+description = ""
+authors = ["alejolop1 <clalejo.0803@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+jupyter = "^1.1.1"
+numpy = "^2.1.1"
+pandas = "^2.2.2"
+pytest = "^8.3.2"
+ipykernel = "^6.29.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
