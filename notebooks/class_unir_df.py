@@ -45,18 +45,36 @@ class DataProcessor:
         else:
             print("Error: Asegúrate de que 'fecha_hora' esté en el DataFrame principal.")
     
-    def unir_varios_estaciones(self, dfs):
-        """
-        Concatena el DataFrame actual con una lista de DataFrames horizontalmente.
-        """
-        if self.df is not None:
-            self.df = pd.concat([self.df] + dfs, axis=1)
-            print("Estaciones unidas por columnas.")
-        else:
-            print("Error: No se ha procesado correctamente el DataFrame.")
+    # def unir_varios_estaciones(self, dfs):
+    #     """
+    #     Concatena el DataFrame actual con una lista de DataFrames horizontalmente.
+    #     """
+    #     if self.df is not None:
+    #         self.df = pd.concat([self.df] + dfs, axis=1)
+    #         print("Estaciones unidas por columnas.")
+    #     else:
+    #         print("Error: No se ha procesado correctamente el DataFrame.")
     
     def obtener_df(self):
         """
         Retorna el DataFrame procesado.
         """
         return self.df
+    
+
+hum = pd.read_csv("data/rionegro_julio/estacion_data_humedad_199__20240701_20240731.csv")
+tem = pd.read_csv("data/rionegro_julio/estacion_data_temperatura_199__20240701_20240731.csv")
+pre = pd.read_csv("data/rionegro_julio/estacion_data_presion_199__20240701_20240731.csv")
+vie = pd.read_csv("data/rionegro_julio/estacion_data_viento_199__20240701_20240731.csv")
+presp = pd.read_csv("data/rionegro_julio/estacion_data_precipitacion_199__20240701_20240731.csv")
+
+procesador = DataProcessor
+
+
+procesador.cargar(hum)
+
+procesador.eliminar_cal()
+procesador.date_time()
+
+df_f = procesador.unir_varios_variables([tem, pre, vie, presp])
+print(df_f)
