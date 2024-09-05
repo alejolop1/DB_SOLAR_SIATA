@@ -16,7 +16,7 @@ class DataProcessor:
         Elimina todas las columnas excepto las dos primeras.
         """
         if self.df is not None:
-            self.df = self.df.iloc[:, :2]
+            self.df = self.df["Calidad"]
             print("Columnas eliminadas.")
         else:
             print("Error: No se ha cargado ningún DataFrame.")
